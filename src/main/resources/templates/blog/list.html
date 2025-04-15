@@ -8,7 +8,15 @@
     <title th:text="${title}"></title>
 </head>
 <body>
-<p th:text="${list}"></p>
+<section>
+    <div th:each="article : ${list}">
+        <h1 th:text="${article.title}"></h1>
+        <p th:text="${article.content}"></p>
+        <section>
+            <img th:src="@{/blog/image/{filename}(filename=${article.imageUrl})} " th:alt="${article.title}">
+        </section>
+    </div>
+</section>
 <a th:href="@{/blog/new}">작성</a>
 </body>
 </html>

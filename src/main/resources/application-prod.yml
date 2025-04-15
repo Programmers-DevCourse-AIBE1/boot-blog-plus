@@ -16,11 +16,22 @@ spring:
     url: ${MYSQL_URL}
     username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
+  # 소셜 로그인
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
+            scope:
+              - user:email # 사용자 이메일 접근 권한
+              - read:user # 사용자 정보 접근 권한
 # 객체 스토리지
 aws:
   s3:
     bucketName: ${STORAGE_BUCKET_NAME}
-    region: ${STORAGE_REGION}
     url: ${STORAGE_URL}
+    region: ${STORAGE_REGION}
     accessKey: ${STORAGE_AK}
     secretKey: ${STORAGE_SK}

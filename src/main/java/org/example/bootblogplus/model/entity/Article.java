@@ -11,12 +11,16 @@ import java.time.LocalDateTime;
 public class Article {
     // JPA
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // MYSQL
+            Long id;
+    @Column(nullable = false) // NotNull - NullSafety
     String title;
-    @Column(nullable = false, length = 2000)
+    @Column(nullable = false, length = 2000) // byte 2^8
     String content;
-    @CreatedDate
+    @CreatedDate // Listener.
+    // createdAt. default? TIL.
     LocalDateTime createTime = LocalDateTime.now(); // JPA
+    //    @Column(nullable = false, length = 2000)
+    @Column(nullable = false) // uuid + 확장자만...
+            String imageUrl;
 }

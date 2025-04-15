@@ -1,6 +1,7 @@
 package org.example.bootblogplus.model.service;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.example.bootblogplus.model.entity.Article;
 import org.example.bootblogplus.model.repository.ArticleRepository;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,10 @@ public class BlogService {
 
     public void createArticle(Article article) throws Exception {
         if (article.getTitle().isEmpty()) {
-            throw new Exception("제목 없음");
+            throw new BadRequestException("제목 없음");
         }
         if (article.getContent().isEmpty()) {
-            throw new Exception("내용 없음");
+            throw new BadRequestException("내용 없음");
         }
         articleRepository.save(article);
     }
